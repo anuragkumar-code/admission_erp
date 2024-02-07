@@ -1,0 +1,37 @@
+Setup github using gitbash
+
+
+1>. git init
+
+2>. git add . 
+
+3>. git commit -m "Add comment"
+
+4>. create in repository on github
+
+5>. git remote add origin https://(.......).git
+
+6> git push -u origin master
+
+
+----------------
+
+https://github.com/marketplace/actions/ftp-deploy
+
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ftp.samkirkland.com
+        username: myFtpUserName
+        password: ${{ secrets.password }}
+        protocol: ftps
